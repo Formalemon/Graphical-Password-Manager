@@ -9,6 +9,10 @@
   },
   "permissions": [
     "activeTab",
-    "storage"
-  ]
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "scripts": ["./JS/test.js"]
+  }
 }
