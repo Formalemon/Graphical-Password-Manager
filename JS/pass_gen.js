@@ -114,7 +114,8 @@ document.getElementById("generate").addEventListener("click", function () {
 
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var currentUrl = tabs[0].url;
-    pass_dict.push([currentUrl, password])
+    var processedUrl = currentUrl.split("/")[2];
+    pass_dict.push([processedUrl, password])
     saveData(pass_dict);
   });
 });
@@ -123,3 +124,8 @@ document.getElementById("save-button").addEventListener("click", function () {
   var data = retrieveData();
   console.log(data);
 });
+
+document.getElementById("reset-button").onclick =e => {
+  pass_dict = [];
+  saveData([]);
+}
