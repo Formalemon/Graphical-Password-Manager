@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>My Extension</title>
+    <style>
+      body {
+        width: 300px;
+      }
+      .row {
+        display: flex;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        cursor: pointer;
+        user-select: none;
+      }
+      img:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Select Images in the correct sequence</h3>
+    <div class="row">
+      <div class="column">
+        <img src="./imgs/1.png" id="1" />
+        <img src="./imgs/2.png" id="2" />
+        <img src="./imgs/3.png" id="3" />
+      </div>
+      <div class="column">
+        <img src="./imgs/4.png" id="4" />
+        <img src="./imgs/5.png" id="5" />
+        <img src="./imgs/6.png" id="6" />
+      </div>
+      <div class="column">
+        <img src="./imgs/7.png" id="7" />
+        <img src="./imgs/8.png" id="8" />
+        <img src="./imgs/9.png" id="9" />
+      </div>
+    </div>
+    <p id="clicks"></p>
+    <button id="test-button">Sign Up</button>
+    <script src="./JS/signup.js"></script>
+  </body>
+</html>
