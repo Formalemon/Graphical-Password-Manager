@@ -18,6 +18,12 @@ function retrieveData() {
   });
 }
 
+function rD(sendResponse){
+  storage.get("userData", function (items) {
+    sendResponse(items);
+  });
+}
+
 // listen for messages from the content script
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.action === "save") {
@@ -26,6 +32,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   } else if (request.action === "retrieve") {
     retrieveData();
     sendResponse({ status: "success" });
+  } else if (request.action === "retrieve_pass") {
+    rD(sendResponse);
+    return true;
   } else {
     sendResponse({ status: "error" });
   }

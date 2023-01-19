@@ -7,6 +7,6 @@ for (let i = 1; i <= 9; i++) {
   });
 }
 
-document
-  .getElementById("signup-button")
-  .addEventListener("click", function () {});
+document.getElementById("signup-button").onclick = e => {
+  location.href = "../index.html";
+}

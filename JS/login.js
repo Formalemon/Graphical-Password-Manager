@@ -12,7 +12,7 @@ window.onload = (e) => {
   randomizePositions();
 };
 
-import { masterPass } from "./signup";
+masterPass = [1];
 
 var clickedImages = [];
 

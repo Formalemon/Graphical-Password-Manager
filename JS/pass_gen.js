@@ -89,7 +89,24 @@ function retrieveData() {
   });
 }
 
-pass_dict = [];
+pass_dict = []
+
+async function retrievePass() {
+  const response = await new Promise((resolve, reject) => {
+      chrome.runtime.sendMessage({ action: "retrieve_pass" }, function(response) {
+          if (response) {
+              resolve(response);
+          } else {
+              reject("Error retrieving data");
+          }
+      });
+  });
+  pass_dict = response.userData;
+  document.getElementById("stored_pass").innerHTML = pass_dict;
+}
+
+retrievePass();
+
 document.getElementById("generate").addEventListener("click", function () {
   var textField = document.getElementById("gen_pass");
   var password = generatePassword();
