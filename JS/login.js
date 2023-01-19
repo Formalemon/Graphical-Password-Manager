@@ -1,6 +1,6 @@
 document.getElementById("test-button").addEventListener("click", function () {
   if(JSON.stringify(clickedImages) === JSON.stringify(masterPass)){
-    location.href = "../pass_gen.html";
+    location.href = "../pass_handler.html";
   }
   else{
     clickedImages = [];
