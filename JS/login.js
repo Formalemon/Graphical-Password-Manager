@@ -1,24 +1,23 @@
 document.getElementById("test-button").addEventListener("click", function () {
-  if(JSON.stringify(clickedImages) === JSON.stringify(masterPass)){
+  if (JSON.stringify(clickedImages) === JSON.stringify(masterPass)) {
     location.href = "../pass_handler.html";
-  }
-  else{
+  } else {
     clickedImages = [];
     document.getElementById("clicks").innerHTML = "Wrong Password";
     randomizePositions();
   }
 });
 
-window.onload = e => {
+window.onload = (e) => {
   randomizePositions();
-}
+};
 
-var masterPass = [1, 5, 9];
+import { masterPass } from "./signup";
 
 var clickedImages = [];
 
-for (let i = 1; i <= 9; i++){
-  document.getElementById(i).addEventListener("click", function(){
+for (let i = 1; i <= 9; i++) {
+  document.getElementById(i).addEventListener("click", function () {
     clickedImages.push(i);
     document.getElementById("clicks").innerHTML = clickedImages;
   });
@@ -33,7 +32,7 @@ var imageElements = [
   document.getElementById("6"),
   document.getElementById("7"),
   document.getElementById("8"),
-  document.getElementById("9")
+  document.getElementById("9"),
 ];
 
 function randomizePositions() {
@@ -42,7 +41,8 @@ function randomizePositions() {
 
   // Update the grid
   for (let i = 0; i < imageElements.length; i++) {
-    document.getElementsByClassName("column")[i%3].appendChild(imageElements[i]);
+    document
+      .getElementsByClassName("column")
+      [i % 3].appendChild(imageElements[i]);
   }
 }
-
