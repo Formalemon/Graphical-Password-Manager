@@ -89,13 +89,22 @@ function retrieveData() {
   });
 }
 
+pass_dict = {};
+
 document.getElementById("generate").addEventListener("click", function () {
   var textField = document.getElementById("gen_pass");
   var password = generatePassword();
   textField.value = password;
-  saveData(password);
+
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    var currentUrl = tabs[0].url;
+    console.log(currentUrl);
+    pass_dict[currentUrl] = password;
+    saveData(pass_dict);
+  });
 });
 
 document.getElementById("save-button").addEventListener("click", function () {
-  retrieveData();
+  var data = retrieveData();
+  console.log(data);
 });
