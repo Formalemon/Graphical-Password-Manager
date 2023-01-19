@@ -53,12 +53,12 @@ function generatePassword(
   for (var i = 0; i < remaining; i++) {
     password.push(
       lower[
-      Math.floor(
-        Math.random() * lower.length +
-        upper.length +
-        digits.length +
-        special.length
-      )
+        Math.floor(
+          Math.random() * lower.length +
+            upper.length +
+            digits.length +
+            special.length
+        )
       ]
     );
   }
@@ -72,7 +72,26 @@ function generatePassword(
   return password;
 }
 
-document.getElementById("generate").addEventListener("click", function() {
+//Functions for saving and retrieving data
+function saveData(data) {
+  chrome.runtime.sendMessage(
+    { action: "save", data: data },
+    function (response) {
+      console.log(response.status);
+    }
+  );
+}
+
+// function to retrieve data from the background script
+function retrieveData() {
+  chrome.runtime.sendMessage({ action: "retrieve" }, function (response) {
+    console.log(response.status);
+  });
+}
+
+document.getElementById("generate").addEventListener("click", function () {
   var textField = document.getElementById("gen_pass");
-  textField.value = generatePassword();
+  var password = generatePassword();
+  textField.value = password;
+  saveData(password);
 });
