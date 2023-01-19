@@ -89,17 +89,20 @@ function retrieveData() {
   });
 }
 
-pass_dict = []
+pass_dict = [];
 
 async function retrievePass() {
   const response = await new Promise((resolve, reject) => {
-      chrome.runtime.sendMessage({ action: "retrieve_pass" }, function(response) {
-          if (response) {
-              resolve(response);
-          } else {
-              reject("Error retrieving data");
-          }
-      });
+    chrome.runtime.sendMessage(
+      { action: "retrieve_pass" },
+      function (response) {
+        if (response) {
+          resolve(response);
+        } else {
+          reject("Error retrieving data");
+        }
+      }
+    );
   });
   pass_dict = response.userData;
   document.getElementById("stored_pass").innerHTML = pass_dict;
@@ -114,9 +117,21 @@ document.getElementById("generate").addEventListener("click", function () {
 
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var currentUrl = tabs[0].url;
+    // Check if the url is in pass_dict
+
+    var tempArr = [];
+    pass_dict.forEach((element) => {
+      tempArr.push(element);
+    });
+
     var processedUrl = currentUrl.split("/")[2];
-    pass_dict.push([processedUrl, password])
-    saveData(pass_dict);
+
+    var arr = [].concat.apply([], tempArr);
+    if (arr.includes(processedUrl)) {
+    } else {
+      pass_dict.push([processedUrl, password]);
+      saveData(pass_dict);
+    }
   });
 });
 
@@ -125,7 +140,16 @@ document.getElementById("save-button").addEventListener("click", function () {
   console.log(data);
 });
 
-document.getElementById("reset-button").onclick =e => {
+document.getElementById("reset-button").onclick = (e) => {
   pass_dict = [];
   saveData([]);
-}
+};
+
+document.getElementById("inject").onclick = (e) => {
+  let inputElements = document.getElementsByTagName("input");
+  for (let i = 0; i < inputElements.length; i++) {
+    if (inputElements[i].type === "password") {
+      document.getElementById("pass").innerHTML = inputElements[i].value;
+    }
+  }
+};
