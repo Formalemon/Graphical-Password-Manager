@@ -126,18 +126,16 @@ document.getElementById("generate").addEventListener("click", function () {
 
     var processedUrl = currentUrl.split("/")[2];
 
-    var arr = [].concat.apply([], tempArr);
+    arr = [].concat.apply([], tempArr);
+
     if (arr.includes(processedUrl)) {
+      let index = arr.indexOf(processedUrl);
+      document.getElementById("saved-pass").innerHTML = arr[index + 1];
     } else {
       pass_dict.push([processedUrl, password]);
       saveData(pass_dict);
     }
   });
-});
-
-document.getElementById("view-saved").addEventListener("click", function () {
-  var data = retrieveData();
-  console.log(data);
 });
 
 document.getElementById("reset-button").onclick = (e) => {
