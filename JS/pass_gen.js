@@ -130,9 +130,9 @@ document.getElementById("generate").addEventListener("click", function () {
 
     if (arr.includes(processedUrl)) {
       let index = arr.indexOf(processedUrl);
-      document.getElementById("saved-pass").innerHTML = arr[index + 1];
+      document.getElementById("saved-pass").innerHTML = decrypt(arr[index + 1]);
     } else {
-      pass_dict.push([processedUrl, password]);
+      pass_dict.push([processedUrl, encrypt(password)]);
       saveData(pass_dict);
     }
   });
@@ -143,11 +143,14 @@ document.getElementById("reset-button").onclick = (e) => {
   saveData([]);
 };
 
-document.getElementById("inject").onclick = (e) => {
-  let inputElements = document.getElementsByTagName("input");
-  for (let i = 0; i < inputElements.length; i++) {
-    if (inputElements[i].type === "password") {
-      document.getElementById("pass").innerHTML = inputElements[i].value;
-    }
-  }
-};
+function encrypt(str) {
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+    return String.fromCharCode('0x' + p1);
+  }));
+}
+
+function decrypt(str) {
+  return decodeURIComponent(atob(str).split('').map(function(c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+}
