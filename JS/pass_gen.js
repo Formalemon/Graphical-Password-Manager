@@ -90,7 +90,6 @@ function retrieveData() {
 }
 
 pass_dict = [];
-
 document.getElementById("generate").addEventListener("click", function () {
   var textField = document.getElementById("gen_pass");
   var password = generatePassword();
