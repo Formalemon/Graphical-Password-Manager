@@ -135,7 +135,7 @@ document.getElementById("generate").addEventListener("click", function () {
   });
 });
 
-document.getElementById("save-button").addEventListener("click", function () {
+document.getElementById("view-saved").addEventListener("click", function () {
   var data = retrieveData();
   console.log(data);
 });
