@@ -11,27 +11,70 @@
       .row {
         display: flex;
       }
+      img {
+        cursor: pointer;
+      }
+      img:hover {
+        opacity: 0.8;
+      }
     </style>
   </head>
   <body>
     <h3>Select Images in the correct sequence</h3>
     <div class="row">
       <div class="column">
-        <img src="./imgs/path-7709452_640.png" />
-        <img src="./imgs/path-7709452_640.png" />
-        <img src="./imgs/path-7709452_640.png" />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image1"
+          onclick="handleClick(this.id)"
+        />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image2"
+          onclick="handleClick(this.id)"
+        />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image3"
+          onclick="handleClick(this.id)"
+        />
       </div>
       <div class="column">
-        <img src="./imgs/path-7709452_640.png" />
-        <img src="./imgs/path-7709452_640.png" />
-        <img src="./imgs/path-7709452_640.png" />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image4"
+          onclick="handleClick(this.id)"
+        />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image5"
+          onclick="handleClick(this.id)"
+        />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image6"
+          onclick="handleClick(this.id)"
+        />
       </div>
       <div class="column">
-        <img src="./imgs/path-7709452_640.png" />
-        <img src="./imgs/path-7709452_640.png" />
-        <img src="./imgs/path-7709452_640.png" />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image7"
+          onclick="handleClick(this.id)"
+        />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image8"
+          onclick="handleClick(this.id)"
+        />
+        <img
+          src="./imgs/path-7709452_640.png"
+          id="image9"
+          onclick="handleClick(this.id)"
+        />
       </div>
     </div>
+    <p id="clicks">Click</p>
     <button id="test-button">Login</button>
     <script src="./JS/login.js"></script>
   </body>
