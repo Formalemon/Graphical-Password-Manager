@@ -4,6 +4,16 @@
 // import the storage API
 const storage = chrome.storage.local;
 
+function saveMp(masterPass) {
+  storage.set({"main":masterPass});
+}
+
+function retrieveMp(sendResponse) {
+  storage.get("main", function (item){
+    sendResponse(item);
+  })
+}
+
 // function to save data to storage
 function saveData(data) {
   storage.set({ userData: data }, function () {
@@ -34,6 +44,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     sendResponse({ status: "success" });
   } else if (request.action === "retrieve_pass") {
     rD(sendResponse);
+    return true;
+  } else if (request.action === "smp") {
+    saveMp(request.data);
+  } else if (request.action === "rmp") {
+    retrieveMp(sendResponse);
     return true;
   } else {
     sendResponse({ status: "error" });

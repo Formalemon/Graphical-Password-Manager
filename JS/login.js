@@ -12,7 +12,25 @@ window.onload = (e) => {
   randomizePositions();
 };
 
-masterPass = [1];
+var masterPass = [];
+
+retrieveMp();
+
+async function retrieveMp() {
+  const response = await new Promise((resolve, reject) => {
+    chrome.runtime.sendMessage(
+      { action: "rmp" },
+      function (response) {
+        if (response) {
+          resolve(response);
+        } else {
+          reject("Error retrieving data");
+        }
+      }
+    );
+  });
+  masterPass = response.main;
+}
 
 var clickedImages = [];
 
