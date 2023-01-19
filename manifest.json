@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Password Auth",
+  "description": "password manager",
+  "version": "1.0",
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "./Icon/icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}
