@@ -1,1 +1,1 @@
-# Graphical-Password-Authenticato
+# Graphical-Password-Authenticator
