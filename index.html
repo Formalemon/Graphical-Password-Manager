@@ -2,17 +2,21 @@
 <html>
   <head>
     <title>My Extension</title>
-    <style>
-      body {
-        width: 300px;
-      }
-    </style>
+    <link rel="stylesheet" href="./Style/index.css" />
   </head>
   <body>
-    <h1>Password Auth</h1>
-    <button id="login-button">Login</button>
-    <button id="signup-button">Sign Up</button>
-    <button id="test-button">test</button>
+    <h1>Password Authenticator</h1>
+    <div class="buttons">
+      <!-- <button id="login-button">Login</button>
+      <button id="signup-button">Sign Up</button>
+      <button id="test-button">test</button> -->
+      <button id="login-button" class="button-64" role="button">
+        <span class="text">Login</span>
+      </button>
+      <button id="signup-button" class="button-64" role="button">
+        <span class="text">Sign Up</span>
+      </button>
+    </div>
 
     <script src="./JS/content.js"></script>
   </body>

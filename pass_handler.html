@@ -2,17 +2,17 @@
 <html>
   <head>
     <title>My Extension</title>
-    <style>
-      body {
-        width: 300px;
-      }
-    </style>
+    <link rel="stylesheet" href="./Style/handler.css" />
   </head>
   <body>
-    <button id="generate">Generate Password</button>
+    <button id="generate" class="button-64" role="button">
+      <span class="text">Generate Password</span>
+    </button>
+
     <input type="text" id="gen_pass" />
     <p id="saved-pass">Your Password</p>
     <button id="reset-button">Reset</button>
+
     <script src="./JS/pass_gen.js"></script>
   </body>
 </html>
