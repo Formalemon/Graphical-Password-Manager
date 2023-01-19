@@ -95,3 +95,7 @@ document.getElementById("generate").addEventListener("click", function () {
   textField.value = password;
   saveData(password);
 });
+
+document.getElementById("save-button").addEventListener("click", function () {
+  retrieveData();
+});
