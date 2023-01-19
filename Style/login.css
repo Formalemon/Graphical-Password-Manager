@@ -1,6 +1,6 @@
 body {
-  width: 350px;
-  height: 350px;
+  width: fit-content;
+  height: fit-content;
   background-color: rgb(5, 6, 45);
   color: #f8f8f2;
   text-align: center;
@@ -17,10 +17,16 @@ img {
   object-fit: cover;
   user-select: none;
   padding: 3px;
+  transition: all 0.1s ease-in-out;
 }
 
 img:hover {
   opacity: 0.8;
+}
+
+img:active {
+  transform: scale(.75);
+  transition: all 0.1s ease-in-out  ;
 }
 
 /* CSS */
