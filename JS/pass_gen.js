@@ -89,7 +89,7 @@ function retrieveData() {
   });
 }
 
-pass_dict = {};
+pass_dict = [];
 
 document.getElementById("generate").addEventListener("click", function () {
   var textField = document.getElementById("gen_pass");
@@ -98,8 +98,7 @@ document.getElementById("generate").addEventListener("click", function () {
 
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var currentUrl = tabs[0].url;
-    console.log(currentUrl);
-    pass_dict[currentUrl] = password;
+    pass_dict.push([currentUrl, password])
     saveData(pass_dict);
   });
 });
