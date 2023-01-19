@@ -18,7 +18,13 @@ function shuffle(array) {
   return array;
 }
 
-function generatePassword(length, numLower, numUpper, numDigits, numSpecial) {
+function generatePassword(
+  length = 16,
+  numLower = 4,
+  numUpper = 4,
+  numDigits = 4,
+  numSpecial = 4
+) {
   // create strings of each character type
   var lower = "abcdefghijklmnopqrstuvwxyz";
   var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -65,3 +71,8 @@ function generatePassword(length, numLower, numUpper, numDigits, numSpecial) {
 
   return password;
 }
+
+document.getElementById("generate").addEventListener("click", function() {
+  var textField = document.getElementById("gen_pass");
+  textField.value = generatePassword();
+});

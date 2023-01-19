@@ -5,14 +5,10 @@
   "version": "1.0",
   "browser_action": {
     "default_popup": "popup.html",
-    "default_icon": "./Icon/icon.png"
+    "default_icon": "./imgs/icon.png"
   },
   "permissions": [
     "activeTab",
-    "storage",
-    "tabs"
-  ],
-  "background": {
-    "scripts": ["./JS/test.js"]
-  }
+    "storage"
+  ]
 }
