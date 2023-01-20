@@ -13,16 +13,12 @@ function retrieveMp(sendResponse) {
 
 // function to save data to storage
 function saveData(data) {
-  storage.set({ userData: data }, function () {
-    console.log("Data saved successfully:", data);
-  });
+  storage.set({ userData: data }, function () {});
 }
 
 // function to retrieve data from storage
 function retrieveData() {
-  storage.get("userData", function (items) {
-    console.log("Data retrieved successfully:", items);
-  });
+  storage.get("userData", function (items) {});
 }
 
 function rD(sendResponse) {
