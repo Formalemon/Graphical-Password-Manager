@@ -114,6 +114,7 @@ document.getElementById("generate").addEventListener("click", function () {
   var textField = document.getElementById("gen_pass");
   var password = generatePassword();
   textField.value = password;
+  document.getElementById("copy-status").innerHTML = "";
 
   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     var currentUrl = tabs[0].url;
@@ -130,9 +131,9 @@ document.getElementById("generate").addEventListener("click", function () {
 
     if (arr.includes(processedUrl)) {
       let index = arr.indexOf(processedUrl);
-      document.getElementById("saved-pass").innerHTML = decrypt(arr[index + 1]);
+      document.getElementById("saved-pass").innerHTML = arr[index + 1];
     } else {
-      pass_dict.push([processedUrl, encrypt(password)]);
+      pass_dict.push([processedUrl, password]);
       saveData(pass_dict);
     }
   });
@@ -143,14 +144,17 @@ document.getElementById("reset-button").onclick = (e) => {
   saveData([]);
 };
 
-function encrypt(str) {
-  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
-    return String.fromCharCode('0x' + p1);
-  }));
-}
+document.getElementById("saved-pass").onclick = (e) => {
+  CopyToClip();
+};
 
-function decrypt(str) {
-  return decodeURIComponent(atob(str).split('').map(function(c) {
-    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''));
+// Copy to Clipboard
+async function CopyToClip() {
+  var copyText = document.getElementById("saved-pass").innerHTML;
+  try {
+    await navigator.clipboard.writeText(copyText);
+    document.getElementById("copy-status").innerHTML = "Copied successfully";
+  } catch (err) {
+    console.error("Failed to copy text: ", err);
+  }
 }

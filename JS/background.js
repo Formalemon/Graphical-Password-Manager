@@ -1,17 +1,14 @@
-// background.js
-// background.js
-
 // import the storage API
 const storage = chrome.storage.local;
 
 function saveMp(masterPass) {
-  storage.set({"main":masterPass});
+  storage.set({ main: masterPass });
 }
 
 function retrieveMp(sendResponse) {
-  storage.get("main", function (item){
+  storage.get("main", function (item) {
     sendResponse(item);
-  })
+  });
 }
 
 // function to save data to storage
@@ -28,7 +25,7 @@ function retrieveData() {
   });
 }
 
-function rD(sendResponse){
+function rD(sendResponse) {
   storage.get("userData", function (items) {
     sendResponse(items);
   });
